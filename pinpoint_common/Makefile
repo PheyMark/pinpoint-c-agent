@@ -114,10 +114,10 @@ cpp_src = pinpoint_agent.cpp \
 c_src_obj= $(c_src:.c=.o)
 cpp_src_obj= $(cpp_src:.cpp=.o)
 
-all:$(THRIFT_OBJS) $(headers) $(cpp_src_obj) $(c_src_obj)
+all: $(cpp_src_obj) $(c_src_obj) | thrift
 	ar rcs $(COMMON_LIB_FILE_NAME) $(cpp_src_obj) $(c_src_obj) $(THRIFT_OBJS)
 
-thrift:$(THRIFT_FILES_DIST)
+thrift: $(THRIFT_FILES_DIST) $(THRIFT_OBJS)
 	@for i in $(THRIFT_FILES_DIST); \
 	    do thrift -o $(THRIFT_FILE_DIR) -r -gen cpp $$i; \
 	done
@@ -135,6 +135,7 @@ clean:
 	rm -fr $(c_src_obj)
 	rm -fr $(cpp_src_obj)
 	rm -fr $(COMMON_LIB_FILE_NAME)
+	rm $(THRIFT_FILE_DIR)/cpp -rf
 	-rm -f $(THRIFT_OBJS)
 	find . -name "*.gcda" | xargs rm -f
 	find . -name "*.gcno" | xargs rm -f
