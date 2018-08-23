@@ -153,7 +153,7 @@ function build_agent(){
     if [ $WITH_GCOV = YES ] ; then
         ./configure  ${JENKINS_DEFINE_CONFIG} CFLAGS="-Wall $PINPOINT_CFLAG" CXXFLAGS="-Wall  -g3 $PINPOINT_CXXFLAG" --with-thrift-dir=$WITH_THRIFT_PATH/include --with-boost-dir=$WITH_BOOST_PATH/include   --enable-gcov 
     elif [ $RELEASE = YES ]; then
-        ./configure ${JENKINS_DEFINE_CONFIG} CFLAGS="-Wall $PINPOINT_CFLAG" CXXFLAGS="pinpoint_php-Wall $PINPOINT_CXXFLAG" --with-thrift-dir=$WITH_THRIFT_PATH/include  --with-boost-dir=$WITH_BOOST_PATH/include --enable-release
+        ./configure ${JENKINS_DEFINE_CONFIG} CFLAGS="-Wall $PINPOINT_CFLAG" CXXFLAGS="-Wall $PINPOINT_CXXFLAG" --with-thrift-dir=$WITH_THRIFT_PATH/include  --with-boost-dir=$WITH_BOOST_PATH/include --enable-release
     else
         ./configure ${JENKINS_DEFINE_CONFIG} CFLAGS="-Wall $PINPOINT_CFLAG" CXXFLAGS="-Wall $PINPOINT_CXXFLAG" --with-thrift-dir=$WITH_THRIFT_PATH/include --with-boost-dir=$WITH_BOOST_PATH/include  
     fi
