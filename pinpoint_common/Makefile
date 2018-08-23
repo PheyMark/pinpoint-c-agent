@@ -114,15 +114,16 @@ cpp_src = pinpoint_agent.cpp \
 c_src_obj= $(c_src:.c=.o)
 cpp_src_obj= $(cpp_src:.cpp=.o)
 
-all: $(cpp_src_obj) $(c_src_obj) | thrift
+all: | $(THRIFT_OBJS) $(cpp_src_obj) $(c_src_obj) 
 	ar rcs $(COMMON_LIB_FILE_NAME) $(cpp_src_obj) $(c_src_obj) $(THRIFT_OBJS)
 
 thrift: $(THRIFT_FILES_DIST) $(THRIFT_OBJS)
 	@for i in $(THRIFT_FILES_DIST); \
 	    do thrift -o $(THRIFT_FILE_DIR) -r -gen cpp $$i; \
+        echo "thrift -o  $(THRIFT_FILE_DIR) -r gen cpp $$i"; \
 	done
 
-$(THRIFT_OBJS): %.o: %.cpp
+$(THRIFT_OBJS): %.o: %.cpp | thrift
 	$(CXX) -c $(CPPFLAGS) $(INC) $(LIBS) -o $@ $<
 
 $(cpp_src_obj): %.o: %.cpp

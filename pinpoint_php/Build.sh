@@ -29,9 +29,6 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 source $DIR/../bin/env.sh
 
-WITH_THRIFT_PATH=$TP_PREFIX
-WITH_BOOST_PATH=$TP_PREFIX
-
 SHOW_HELP=NO
 JUST_CLEAN=NO
 WITH_DEBUG=NO
@@ -75,11 +72,11 @@ function init_env(){
     export DISABLE_64BIT=NO
     export DEBUG_FLAG=${WITH_DEBUG}
 
-    if [[ -d $USER_BOOST_PATH/include/boost && -d $USER_THRIFT_PATH/include/thrfit ]]
+    if [[ -d $USER_BOOST_PATH/include/boost && -d $USER_THRIFT_PATH/include/thrift ]]
     then
         export BOOST_PATH=${USER_BOOST_PATH}
         export THRIFT_PATH=${USER_THRIFT_PATH}
-    elif [[ -d $WITH_BOOST_PATH/include/boost  && -d $WITH_THRIFT_PATH/include/thrfit ]]
+    elif [[ -d $WITH_BOOST_PATH/include/boost  && -d $WITH_THRIFT_PATH/include/thrift ]]
     then  
         echo "WITH_BOOST_PATH="$WITH_BOOST_PATH
         echo "WITH_THRIFT_PATH="$WITH_THRIFT_PATH
