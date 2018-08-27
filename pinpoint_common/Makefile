@@ -119,7 +119,7 @@ all:$(THRIFT_OBJS) $(headers) $(cpp_src_obj) $(c_src_obj)
 
 thrift:$(THRIFT_FILES_DIST)
 	@for i in $(THRIFT_FILES_DIST); \
-	    do thrift -o $(THRIFT_FILE_DIR) -r -gen cpp $$i; \
+	    do $(WITH_THRIFT_PATH)/bin/thrift -o $(THRIFT_FILE_DIR) -r -gen cpp $$i; \
 	done
 
 $(THRIFT_OBJS): %.o: %.cpp
