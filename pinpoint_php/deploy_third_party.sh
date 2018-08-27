@@ -15,7 +15,7 @@
 
 # for debug
 #set -x
-set -e
+# set -e
 
 # SOURCE="${BASH_SOURCE[0]}"
 # while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
@@ -66,7 +66,11 @@ func_build_thrift(){
 
 func_build_boost(){
     if [ ! -f ${TP_PREFIX}/lib/libboost_atomic.a ]; then
-        cd ${TP_DIR}/boost
+        cd ${TP_DIR}
+        wget https://dl.bintray.com/boostorg/release/1.63.0/source/boost_1_63_0.tar.gz
+        tar xvf boost_1_63_0.tar.gz 
+        ln -s boost_1_63_0 boost
+        cd boost
         ./bootstrap.sh
         ./b2 -j4 install --prefix=${TP_PREFIX}
         

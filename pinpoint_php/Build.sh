@@ -14,7 +14,7 @@
 # limitations under the License.
 
 #for debug
-set -e
+# set -e
 set -x
 
 SOURCE="${BASH_SOURCE[0]}"
