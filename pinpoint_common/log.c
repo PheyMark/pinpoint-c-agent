@@ -89,7 +89,7 @@ int set_logfile_root_path(const char* logFileDirectory)
         return -1;
     }
     _logInfo.fileFd = fd;
-    strncpy(_logInfo.prefixFilePath,logFileDirectory,MAXFILESTRLEN);
+    memcpy(_logInfo.prefixFilePath,logFileDirectory,MAXFILESTRLEN);
     return 0;
 }
 

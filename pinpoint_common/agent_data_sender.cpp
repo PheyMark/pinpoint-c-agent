@@ -124,7 +124,7 @@ namespace Pinpoint
 
                 dataSender->sendPacket(packetPtr, 100);
             }
-            catch (std::exception exception)
+            catch (std::exception& exception)
             {
                 LOGE("send agentData exception. exception=%s", exception.what());
             }

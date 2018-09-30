@@ -742,7 +742,7 @@ namespace Pinpoint
             {
                 stack.reserve(DEFAULT_STACK_LEN);
             }
-            catch (std::bad_alloc)
+            catch (std::bad_alloc&)
             {
 
             }

@@ -233,7 +233,7 @@ namespace Pinpoint
                 if(msgLen > FORMAT_LOG_BUF_SIZE) // msg truncated
                 {
                     static const char trun_str[]= "......\n";
-                    strncpy(fullLogBuf+(FORMAT_LOG_BUF_SIZE - sizeof(trun_str)),trun_str,sizeof(trun_str));
+                    memcpy(fullLogBuf+(FORMAT_LOG_BUF_SIZE - sizeof(trun_str)),trun_str,sizeof(*trun_str));
                     msgLen = FORMAT_LOG_BUF_SIZE;
                 }
 
